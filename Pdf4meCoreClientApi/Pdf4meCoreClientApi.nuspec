@@ -11,9 +11,12 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>Package updated.</releaseNotes>
-    <copyright>Copyright 2018</copyright>
-    <tags>Pdf4me Client Api</tags>
+    <copyright>Copyright 2018</copyright> 
+    <tags>PDF PDF/A Expert Pdf4me ClientApi OCR merge split optimize convert document</tags>
   </metadata>
   <files>
+    <file src="bin\Debug\netcoreapp2.0\Pdf4me.CoreClient.dll" target="lib\netcoreapp2.0"  />
+    <file src="bin\Debug\netcoreapp2.0\Pdf4me.CoreClient.pdb" target="lib\netcoreapp2.0" />
+    <!--<file src="bin\Debug\Pdf4me.CoreClient.xml"  />-->
   </files>
 </package>
