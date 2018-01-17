@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>84D15B98-5C18-4540-B430-BE10AE980AF0</id>
-    <version>0.3.0</version>
-    <title>Pdf4me-ClientCore</title>
+    <id>Pdf4me.CoreClient</id>
+    <version>0.3.1</version>
+    <title>Pdf4me.CoreCore</title>
     <authors>Pdf4me</authors>
     <owners>Pdf4me</owners>
     <iconUrl>https://dev-dev.pdf4me.com/Content/images/favicons/favicon.ico</iconUrl>
     <projectUrl>https://dev-dev.pdf4me.com</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Pdf, Ocr, Document SaaS-Api - fast and easy to use expert functionality</description>
-    <releaseNotes>Package updated.</releaseNotes>
+    <releaseNotes>Latest</releaseNotes>
     <copyright>Copyright 2018</copyright> 
     <tags>PDF PDF/A Expert Pdf4me ClientApi OCR merge split optimize convert document</tags>
   </metadata>
