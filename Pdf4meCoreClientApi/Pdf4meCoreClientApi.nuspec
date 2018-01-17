@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
-    <version>$version$</version>
-    <title>$title$</title>
+    <id>84D15B98-5C18-4540-B430-BE10AE980AF0</id>
+    <version>0.3.0</version>
+    <title>Pdf4me-ClientCore</title>
     <authors>Pdf4me</authors>
-    <owners>$author$</owners>
+    <owners>Pdf4me</owners>
     <iconUrl>https://dev-dev.pdf4me.com/Content/images/favicons/favicon.ico</iconUrl>
     <projectUrl>https://dev-dev.pdf4me.com</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
