@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <AssemblyName>Pdf4me.CoreClient</AssemblyName>
     <RootNamespace>Pdf4me.CoreClient</RootNamespace>
+    <ApplicationIcon>pdf4me.ico</ApplicationIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

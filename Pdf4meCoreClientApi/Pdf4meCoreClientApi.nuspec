@@ -4,12 +4,12 @@
     <id>$id$</id>
     <version>$version$</version>
     <title>$title$</title>
-    <authors>$author$</authors>
+    <authors>Pdf4me</authors>
     <owners>$author$</owners>
     <iconUrl>https://dev-dev.pdf4me.com/Content/images/favicons/favicon.ico</iconUrl>
     <projectUrl>https://dev-dev.pdf4me.com</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
+    <description>Pdf, Ocr, Document SaaS-Api - fast and easy to use expert functionality</description>
     <releaseNotes>Package updated.</releaseNotes>
     <copyright>Copyright 2018</copyright> 
     <tags>PDF PDF/A Expert Pdf4me ClientApi OCR merge split optimize convert document</tags>
