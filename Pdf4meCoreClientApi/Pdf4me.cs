@@ -9,7 +9,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pdf4me.Client
+namespace Pdf4meClient
 {
     public class Pdf4meClient
     {
@@ -37,7 +37,6 @@ namespace Pdf4me.Client
         {
             get
             {
-                
                 return new DocumentClient(getApi());
             }
         }
@@ -46,23 +45,87 @@ namespace Pdf4me.Client
         {
             get
             {
-                return new ManagementClient( getApi());
+                return new ManagementClient(getApi());
             }
         }
 
-        public PdfClient PdfClient
+        public OptimizeClient OptimizeClient
         {
             get
             {
-                return new PdfClient(getApi());
+                return new OptimizeClient(getApi());
             }
         }
 
-        public LightClient LightClient
+        public StampClient StampClient
         {
             get
             {
-                return new LightClient(getApi());
+                return new StampClient(getApi());
+            }
+        }
+
+        public ImageClient ImageClient
+        {
+            get
+            {
+                return new ImageClient(getApi());
+            }
+        }
+
+        public OcrClient OcrClient
+        {
+            get
+            {
+                return new OcrClient(getApi());
+            }
+        }
+
+        public JobClient JobClient
+        {
+            get
+            {
+                return new JobClient(getApi());
+            }
+        }
+
+        public MergeClient MergeClient
+        {
+            get
+            {
+                return new MergeClient(getApi());
+            }
+        }
+
+        public ConvertClient ConvertClient
+        {
+            get
+            {
+                return new ConvertClient(getApi());
+            }
+        }
+
+        public ExtractClient ExtractClient
+        {
+            get
+            {
+                return new ExtractClient(getApi());
+            }
+        }
+
+        public PdfAClient PdfAClient
+        {
+            get
+            {
+                return new PdfAClient(getApi());
+            }
+        }
+
+        public SplitClient SplitClient
+        {
+            get
+            {
+                return new SplitClient(getApi());
             }
         }
 
