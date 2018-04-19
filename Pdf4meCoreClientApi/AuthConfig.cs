@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Pdf4me
+namespace Pdf4meClient
 {
     public class AuthConfig
     {
