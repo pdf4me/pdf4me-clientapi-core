@@ -3737,12 +3737,15 @@ namespace Pdf4meClient
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.12.2.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class ConvertToPdfRes
     {
+        [Newtonsoft.Json.JsonProperty("traceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string TraceId { get; set; }
+
         /// <summary>Converted Document</summary>
         [Newtonsoft.Json.JsonProperty("document", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Document Document { get; set; }
 
         [Newtonsoft.Json.JsonProperty("inDocMetadata", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.ObjectModel.ObservableCollection<DocMetadata> InDocMetadata { get; set; }
+        public DocMetadata InDocMetadata { get; set; }
 
         public string ToJson()
         {
@@ -4624,6 +4627,9 @@ namespace Pdf4meClient
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.12.2.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class ProduceDocumentsRes
     {
+        [Newtonsoft.Json.JsonProperty("traceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string TraceId { get; set; }
+
         /// <summary>Stamped Document</summary>
         [Newtonsoft.Json.JsonProperty("documents", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.ObjectModel.ObservableCollection<Document> Documents { get; set; }
@@ -4689,11 +4695,14 @@ namespace Pdf4meClient
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.12.2.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class ExtractRes
     {
+        [Newtonsoft.Json.JsonProperty("traceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string TraceId { get; set; }
+
         [Newtonsoft.Json.JsonProperty("document", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Document Document { get; set; }
 
         [Newtonsoft.Json.JsonProperty("inDocMetadata", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.ObjectModel.ObservableCollection<DocMetadata> InDocMetadata { get; set; }
+        public DocMetadata InDocMetadata { get; set; }
 
         public string ToJson()
         {
@@ -5026,12 +5035,15 @@ namespace Pdf4meClient
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.12.2.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class CreateImagesRes
     {
+        [Newtonsoft.Json.JsonProperty("traceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string TraceId { get; set; }
+
         /// <summary>Document containing the data</summary>
         [Newtonsoft.Json.JsonProperty("document", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Document Document { get; set; }
 
         [Newtonsoft.Json.JsonProperty("inDocMetadata", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.ObjectModel.ObservableCollection<DocMetadata> InDocMetadata { get; set; }
+        public DocMetadata InDocMetadata { get; set; }
 
         public string ToJson()
         {
@@ -5494,6 +5506,9 @@ namespace Pdf4meClient
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.12.2.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class RunJobRes
     {
+        [Newtonsoft.Json.JsonProperty("traceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string TraceId { get; set; }
+
         [Newtonsoft.Json.JsonProperty("jobId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Guid JobId { get; set; }
 
@@ -5708,8 +5723,11 @@ namespace Pdf4meClient
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.12.2.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class CheckAvailabilityRes
     {
-        [Newtonsoft.Json.JsonProperty("docMetadata", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.ObjectModel.ObservableCollection<DocMetadata> DocMetadata { get; set; }
+        [Newtonsoft.Json.JsonProperty("traceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string TraceId { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("inDocMetadata", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public DocMetadata InDocMetadata { get; set; }
 
         [Newtonsoft.Json.JsonProperty("Status", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? Status { get; set; }
@@ -5772,11 +5790,14 @@ namespace Pdf4meClient
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.12.2.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class MergeRes
     {
+        [Newtonsoft.Json.JsonProperty("traceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string TraceId { get; set; }
+
         [Newtonsoft.Json.JsonProperty("document", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Document Document { get; set; }
 
         [Newtonsoft.Json.JsonProperty("inDocMetadata", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.ObjectModel.ObservableCollection<DocMetadata> InDocMetadata { get; set; }
+        public DocMetadata InDocMetadata { get; set; }
 
         public string ToJson()
         {
@@ -5822,6 +5843,9 @@ namespace Pdf4meClient
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.12.2.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class RecognizeDocumentRes
     {
+        [Newtonsoft.Json.JsonProperty("traceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string TraceId { get; set; }
+
         /// <summary>Stamped Document</summary>
         [Newtonsoft.Json.JsonProperty("document", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Document Document { get; set; }
@@ -5873,12 +5897,15 @@ namespace Pdf4meClient
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.12.2.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class OptimizeRes
     {
+        [Newtonsoft.Json.JsonProperty("traceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string TraceId { get; set; }
+
         /// <summary>Stamped Document</summary>
         [Newtonsoft.Json.JsonProperty("document", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Document Document { get; set; }
 
         [Newtonsoft.Json.JsonProperty("inDocMetadata", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.ObjectModel.ObservableCollection<DocMetadata> InDocMetadata { get; set; }
+        public DocMetadata InDocMetadata { get; set; }
 
         public string ToJson()
         {
@@ -5924,12 +5951,15 @@ namespace Pdf4meClient
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.12.2.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class CreatePdfARes
     {
+        [Newtonsoft.Json.JsonProperty("traceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string TraceId { get; set; }
+
         /// <summary>Stamped Document</summary>
         [Newtonsoft.Json.JsonProperty("document", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Document Document { get; set; }
 
         [Newtonsoft.Json.JsonProperty("inDocMetadata", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.ObjectModel.ObservableCollection<DocMetadata> InDocMetadata { get; set; }
+        public DocMetadata InDocMetadata { get; set; }
 
         public string ToJson()
         {
@@ -5998,6 +6028,9 @@ namespace Pdf4meClient
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.12.2.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class SplitRes
     {
+        [Newtonsoft.Json.JsonProperty("traceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string TraceId { get; set; }
+
         [Newtonsoft.Json.JsonProperty("documents", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.ObjectModel.ObservableCollection<Document> Documents { get; set; }
 
@@ -6048,12 +6081,15 @@ namespace Pdf4meClient
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.12.2.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class StampRes
     {
+        [Newtonsoft.Json.JsonProperty("traceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string TraceId { get; set; }
+
         /// <summary>Stamped Document</summary>
         [Newtonsoft.Json.JsonProperty("document", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Document Document { get; set; }
 
         [Newtonsoft.Json.JsonProperty("inDocMetadata", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.ObjectModel.ObservableCollection<DocMetadata> InDocMetadata { get; set; }
+        public DocMetadata InDocMetadata { get; set; }
 
         public string ToJson()
         {
