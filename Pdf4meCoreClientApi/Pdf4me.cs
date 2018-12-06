@@ -1,13 +1,7 @@
-﻿//using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
+﻿using System;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pdf4meClient
 {
@@ -17,9 +11,6 @@ namespace Pdf4meClient
         public static readonly Pdf4me Instance = new Pdf4me();
 
         string _api = "https://api-dev.pdf4me.com";
-        //string _authString = "https://login.microsoftonline.com/devynooxlive.onmicrosoft.com";
-        //string _clientId = "";
-        //string _key = "";
         string _basicToken = "";
 
         static Pdf4me()
@@ -31,28 +22,7 @@ namespace Pdf4meClient
         // Instance constructor is private to enforce singleton semantics
         private Pdf4me() : base()
         {
-            //_clientId = ConfigurationManager.AppSettings["Pdf4meClientId"];
-            //_key = ConfigurationManager.AppSettings["Pdf4meSecret"];
         }
-
-        ///// <summary>
-        ///// Initialise with Client Id and Key
-        ///// </summary>
-        ///// <param name="clientId">ClientId</param>
-        ///// <param name="key">Secret</param>
-        ///// <param name="api">Api url to be set. If passed null, url will https://api-dev.pdf4me.com</param>
-        //public void Init(string clientId, string key, string api)
-        //{
-        //    _clientId = clientId;
-        //    _key = key;
-
-        //    if (!string.IsNullOrEmpty(api))
-        //    {
-        //        _api = api;
-        //    }
-
-        //    _basicToken = "";
-        //}
 
         /// <summary>
         /// Initialise with basic token
@@ -171,34 +141,6 @@ namespace Pdf4meClient
 
             HttpClient client;
 
-            //if (!string.IsNullOrEmpty(_clientId) && !string.IsNullOrEmpty(_key))
-            //{
-            //    ClientCredential clientCred = new ClientCredential(_clientId, _key);
-
-            //    AuthenticationContext authenticationContext = new AuthenticationContext(_authString, false);
-            //    AuthenticationResult authenticationResult = authenticationContext.AcquireTokenAsync(_clientId, clientCred).ConfigureAwait(false).GetAwaiter().GetResult();
-            //    var token = authenticationResult.AccessToken;
-            //    //txtToken.Text = token;
-
-            //    // Do Stamp
-
-            //    ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-
-            //    client = new HttpClient();
-            //    client.Timeout = new TimeSpan(0, 5, 0);
-            //    client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-            //    //client.SetBearerToken(token);
-
-            //    client.DefaultRequestHeaders.Accept.Clear();
-            //    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            //    //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            //    Uri apiUri = new Uri(_api);
-            //    client.BaseAddress = apiUri;
-
-            //}
-            //else 
             if (!string.IsNullOrEmpty(_basicToken))
             {
 
@@ -208,9 +150,6 @@ namespace Pdf4meClient
                 client.Timeout = new TimeSpan(0, 5, 0);
 
 
-                //var byteArray = Encoding.ASCII.GetBytes($"{_clientId}:{_key}");
-                //var byteArray = Encoding.ASCII.GetBytes($"{_basicToken}");
-                //var basicToken = Convert.ToBase64String(byteArray);
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", _basicToken);
 
                 client.DefaultRequestHeaders.Accept.Clear();
@@ -221,41 +160,11 @@ namespace Pdf4meClient
                 client.BaseAddress = apiUri;
             }
             else
-                throw new ApplicationException("Missing token for authentication, please give ClientId/Key or BasicToken");
+                throw new ApplicationException("Missing token for authentication, please give BasicToken");
 
 
 
             return client;
         }
-
-        //public string getApiToken()
-        //{
-
-        //    //string tenantName = "devynooxlive.onmicrosoft.com";
-        //    //string authString = "https://login.microsoftonline.com/" + tenantName;
-
-        //    // SLApp
-        //    //string clientId = "98a707a7-1860-4bbb-b956-51d95f1f338c";
-        //    //string key = "o6YE76EHPPdnia7h/juHKIdDf7bWYgcu3PbzHuK6qJk=";
-
-
-        //    //string resource = clientId;
-
-
-        //    ClientCredential clientCred = new ClientCredential(_clientId, _key);
-
-        //    string token;
-
-        //    AuthenticationContext authenticationContext = new AuthenticationContext(_authString, false);
-        //    AuthenticationResult authenticationResult = authenticationContext.AcquireTokenAsync(_clientId, clientCred).ConfigureAwait(false).GetAwaiter().GetResult();
-        //    token = authenticationResult.AccessToken;
-        //    //txtToken.Text = token;
-
-
-        //    return token;
-
-        //}
-
-
     }
 }

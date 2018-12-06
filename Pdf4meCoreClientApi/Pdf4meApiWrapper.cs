@@ -55,11 +55,12 @@ namespace Pdf4meClient
                 var res = await client.SendAsync(message).ConfigureAwait(false);
 
                 // check response
-                int statusCode = (int) res.StatusCode;
-                if(statusCode == 500)
+                int statusCode = (int)res.StatusCode;
+                if (statusCode == 500)
                 {
                     throw new Pdf4meBackendException($"HTTP 500: {res.ReasonPhrase}");
-                }else if(statusCode != 200 && statusCode != 204)
+                }
+                else if (statusCode != 200 && statusCode != 204)
                 {
                     throw new Pdf4meBackendException($"HTTP {statusCode}: {res.ReasonPhrase}");
                 }
