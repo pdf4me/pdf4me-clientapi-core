@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Pdf4me.CoreClient</id>
-    <version>0.5.2</version>
+    <version>0.5.3</version>
     <title>Pdf4me.CoreClient</title>
     <authors>Pdf4me</authors>
     <owners>Pdf4me</owners>
@@ -11,7 +11,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Pdf, Ocr, Document SaaS-Api - fast and easy to use expert functionality</description>
     <releaseNotes>Latest</releaseNotes>
-    <copyright>Copyright 2018</copyright> 
+    <copyright>Copyright 2019</copyright> 
     <tags>PDF PDF/A Expert Pdf4me ClientApi OCR merge split optimize convert document</tags>
   </metadata>
   <files>
