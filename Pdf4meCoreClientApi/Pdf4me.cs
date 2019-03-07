@@ -10,7 +10,7 @@ namespace Pdf4meClient
 
         public static readonly Pdf4me Instance = new Pdf4me();
 
-        string _api = "https://api-dev.pdf4me.com";
+        string _api = "https://api.pdf4me.com";
         string _basicToken = "";
 
         static Pdf4me()
@@ -47,13 +47,13 @@ namespace Pdf4meClient
             }
         }
 
-        /*public DocumentClient DocumentClient
+        public DocumentClient DocumentClient
         {
             get
             {
                 return new DocumentClient(getApi());
             }
-        }*/
+        }
 
         public ExtractClient ExtractClient
         {
@@ -95,13 +95,13 @@ namespace Pdf4meClient
             }
         }
 
-        /*public OcrClient OcrClient
+        public OcrClient OcrClient
         {
             get
             {
                 return new OcrClient(getApi());
             }
-        }*/
+        }
 
         public OptimizeClient OptimizeClient
         {
@@ -135,10 +135,16 @@ namespace Pdf4meClient
             }
         }
 
+        public BarcodeClient BarcodeClient
+        {
+            get
+            {
+                return new BarcodeClient(getApi());
+            }
+        }
+
         public HttpClient getApi()
         {
-
-
             HttpClient client;
 
             if (!string.IsNullOrEmpty(_basicToken))
@@ -155,7 +161,7 @@ namespace Pdf4meClient
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.UserAgent.Clear();
-                client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("pdf4me-core", "0.5.3"));
+                client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("pdf4me-core", "0.5.5"));
 
                 Uri apiUri = new Uri(_api);
                 client.BaseAddress = apiUri;
