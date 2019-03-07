@@ -16,7 +16,12 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
-  </PropertyGroup>
+   <PlatformTarget>AnyCPU</PlatformTarget>
+   <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+ </PropertyGroup>
+
+ <PropertyGroup>
+  <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
+</PropertyGroup>
 
 </Project>
