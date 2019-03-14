@@ -171,6 +171,11 @@ namespace Pdf4meClient
 
     }
 
+    public partial class DocumentClient
+    {
+
+    }
+
     public partial class PdfAClient
     {
         public async Task<byte[]> RotatePageAsync(byte[] file, string pageNr, PdfRotateRotationType rotate)
@@ -292,9 +297,26 @@ namespace Pdf4meClient
             //return new List<byte[]> { splitRes.Documents.fi .DocData, splitRes.Documents[1].DocData };
         }
 
-        public async Task<System.Collections.Generic.HashSet<byte[]>> SplitByPageNrAsync(FileParameter file, int pageNr, string jobIdExt = null)
+        public async Task<HashSet<byte[]>> SplitByPageNrAsync(FileParameter file, int pageNr, string jobIdExt = null)
         {
             return await SplitByPageNrAsync(pageNr, jobIdExt, file);
+        }
+
+        public async Task<List<byte[]>> SplitRecurringAsync(byte[] file, int pageNr)
+        {
+            byte[] res = await CustomHttp.postWrapper(
+                new List<string> { "pageNr", pageNr.ToString() },
+                new List<Tuple<byte[], string, string>> { new Tuple<byte[], string, string>(file, "file", "pdf.pdf") },
+                "Split/SplitRecurring",
+                _httpClient);
+
+
+            // desirialization
+            string respJson = System.Text.Encoding.Default.GetString(res);
+            SplitRes splitRes = Newtonsoft.Json.JsonConvert.DeserializeObject<SplitRes>(respJson);
+
+            // PDF extraction
+            return splitRes.Documents.ToList().Select(a => a.DocData).ToList();
         }
 
     }
