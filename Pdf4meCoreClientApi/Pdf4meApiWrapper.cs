@@ -4,6 +4,7 @@ using System.IO;
 using System.Net.Http;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace Pdf4meClient
 {
@@ -59,11 +60,13 @@ namespace Pdf4meClient
                 int statusCode = (int)res.StatusCode;
                 if (statusCode == 500)
                 {
-                    throw new Pdf4meBackendException($"HTTP 500: {res.ReasonPhrase}");
+                    var error_message = await res.Content.ReadAsStringAsync();
+                    throw new Pdf4meBackendException($"HTTP 500: {res.ReasonPhrase} : {error_message}");
                 }
                 else if (statusCode != 200 && statusCode != 204)
                 {
-                    throw new Pdf4meBackendException($"HTTP {statusCode}: {res.ReasonPhrase}");
+                    var error_message = await res.Content.ReadAsStringAsync();
+                    throw new Pdf4meBackendException($"HTTP {statusCode}: {res.ReasonPhrase}: {error_message}");
                 }
 
                 // extract response
@@ -129,6 +132,20 @@ namespace Pdf4meClient
                 _httpClient);
         }
 
+        public async Task<List<byte[]>> CreateThumbnailsAsync(byte[] file, int width, string pageNrs, ImageActionImageExtension imageFormat)
+        {
+            var res = await CustomHttp.postWrapper(
+                new List<string> { "width", width.ToString(), "pageNrs", pageNrs, "imageFormat", Enum.GetName(typeof(ImageActionImageExtension), imageFormat) },
+                new List<Tuple<byte[], string, string>> { new Tuple<byte[], string, string>(file, "file", "pdf.pdf") },
+                "Image/CreateThumbnails",
+                _httpClient);
+
+            // desirialization
+            string respJson = System.Text.Encoding.Default.GetString(res);
+            return JsonConvert.DeserializeObject<List<byte[]>>(respJson);
+        }
+
+
         public async Task<FileResponse> CreateThumbnailAsync(FileParameter file, int width, string pageNr, string imageFormat, string jobIdExt = null)
         {
             return await CreateThumbnailAsync(width, pageNr, imageFormat, jobIdExt, file);
@@ -164,7 +181,7 @@ namespace Pdf4meClient
                 _httpClient);
         }
 
-        public async Task<FileResponse> OptimizeByProfileAsync(FileParameter file, Profile profile = Profile.Default, string jobIdExt = null)
+        public async Task<FileResponse> OptimizeByProfileAsync(FileParameter file, Profile profile = Profile.Max, string jobIdExt = null)
         {
             return await OptimizeByProfileAsync(profile, jobIdExt, file);
         }
@@ -229,13 +246,17 @@ namespace Pdf4meClient
             return await UnlockDocumentAsync(password, jobIdExt, file);
         }
 
-        public async Task<byte[]> ValidateDocumentAsync(byte[] file, PdfAActionCompliance pdfCompliance)
+        public async Task<ValidateRes> ValidateDocumentAsync(byte[] file, PdfAActionCompliance pdfCompliance)
         {
-            return await CustomHttp.postWrapper(
+            byte[] res = await CustomHttp.postWrapper(
                 new List<string> { "pdfCompliance", Enum.GetName(typeof(PdfAActionCompliance), pdfCompliance) },
                 new List<Tuple<byte[], string, string>> { new Tuple<byte[], string, string>(file, "file", "pdf.pdf") },
                 "PdfA/ValidateDocument",
                 _httpClient);
+
+            // desirialization
+            string respJson = System.Text.Encoding.Default.GetString(res);
+            return JsonConvert.DeserializeObject<ValidateRes>(respJson);
         }
 
         public async Task<byte[]> RepairDocumentAsync(byte[] file)
@@ -289,17 +310,12 @@ namespace Pdf4meClient
 
             // desirialization
             string respJson = System.Text.Encoding.Default.GetString(res);
-            SplitRes splitRes = Newtonsoft.Json.JsonConvert.DeserializeObject<SplitRes>(respJson);
-
-            // PDF extraction
-            return splitRes.Documents.ToList().Select(a => a.DocData).ToList();
-
-            //return new List<byte[]> { splitRes.Documents.fi .DocData, splitRes.Documents[1].DocData };
+            return JsonConvert.DeserializeObject<List<byte[]>>(respJson);
         }
 
         public async Task<HashSet<byte[]>> SplitByPageNrAsync(FileParameter file, int pageNr, string jobIdExt = null)
         {
-            return await SplitByPageNrAsync(pageNr, jobIdExt, file);
+            return await SplitByPageNrAsync(pageNr, jobIdExt, null, file);
         }
 
         public async Task<List<byte[]>> SplitRecurringAsync(byte[] file, int pageNr)
@@ -313,10 +329,7 @@ namespace Pdf4meClient
 
             // desirialization
             string respJson = System.Text.Encoding.Default.GetString(res);
-            SplitRes splitRes = Newtonsoft.Json.JsonConvert.DeserializeObject<SplitRes>(respJson);
-
-            // PDF extraction
-            return splitRes.Documents.ToList().Select(a => a.DocData).ToList();
+            return JsonConvert.DeserializeObject<List<byte[]>>(respJson);
         }
 
     }
@@ -335,6 +348,28 @@ namespace Pdf4meClient
         public async Task<FileResponse> TextStampAsync(FileParameter file, string text, string pages, AlignX alignX, AlignY alignY, string jobIdExt = null)
         {
             return await TextStampAsync(text, pages, alignX, alignY, jobIdExt, file);
+        }
+
+    }
+
+    public partial class BarcodeClient
+    {
+        public async Task<ReadBarcodesRes> ReadBarcodesByTypeAsync(byte[] file, BarcodeType barcodeType)
+        {
+            byte[] res = await CustomHttp.postWrapper(
+                new List<string> { "barcodeType", barcodeType.ToString() },
+                new List<Tuple<byte[], string, string>> { new Tuple<byte[], string, string>(file, "file", "pdf.pdf") },
+                "Barcode/ReadBarcodesByType",
+                _httpClient);
+
+            // desirialization
+            string respJson = System.Text.Encoding.Default.GetString(res);
+            return JsonConvert.DeserializeObject<ReadBarcodesRes>(respJson);
+        }
+
+        public async Task<ReadBarcodesRes> ReadBarcodesByTypeAsync(FileParameter file, BarcodeType barcodeType, string jobIdExt = null)
+        {
+            return await ReadBarcodesByTypeAsync(barcodeType, jobIdExt, file);
         }
 
     }
