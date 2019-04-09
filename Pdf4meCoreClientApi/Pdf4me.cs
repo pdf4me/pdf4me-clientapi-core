@@ -47,14 +47,6 @@ namespace Pdf4meClient
             }
         }
 
-        public DocumentClient DocumentClient
-        {
-            get
-            {
-                return new DocumentClient(getApi());
-            }
-        }
-
         public ExtractClient ExtractClient
         {
             get
@@ -68,6 +60,14 @@ namespace Pdf4meClient
             get
             {
                 return new ImageClient(getApi());
+            }
+        }
+
+        public DocumentClient DocumentClient
+        {
+            get
+            {
+                return new DocumentClient(getApi());
             }
         }
 
@@ -169,7 +169,7 @@ namespace Pdf4meClient
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.UserAgent.Clear();
-                client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("pdf4me-core", "0.5.9"));
+                client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("pdf4me-core", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()));
 
                 Uri apiUri = new Uri(_api);
                 client.BaseAddress = apiUri;
